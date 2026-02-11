@@ -1,60 +1,55 @@
-import { Camera, Shirt, Sparkles } from 'lucide-react'
+import { Upload, Image as ImageIcon, Wand2 } from 'lucide-react'
 
 const steps = [
   {
-    icon: Camera,
-    step: '01',
-    title: 'Snap Your Photo',
-    description: 'Take a quick photo of yourself or upload from your gallery.',
+    number: '01',
+    icon: Upload,
+    title: 'Upload Your Photo',
+    description: 'Take a full-body photo or upload one from your gallery. Works best with good lighting.',
   },
   {
-    icon: Shirt,
-    step: '02',
+    number: '02',
+    icon: ImageIcon,
     title: 'Pick an Outfit',
-    description: 'Choose any clothing item you want to try — from your camera or our gallery.',
+    description: 'Select from trending styles or upload a reference image of any outfit you want to try.',
   },
   {
-    icon: Sparkles,
-    step: '03',
-    title: 'See the Magic',
-    description: 'Our AI instantly shows you exactly how that outfit looks on you.',
+    number: '03',
+    icon: Wand2,
+    title: 'AI Magic',
+    description: 'Our AI generates a realistic try-on in seconds. See how it fits, drapes, and looks on you.',
   },
 ]
 
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-blue-100 text-blue-700 text-sm font-medium rounded-full mb-4">
-            Simple as 1-2-3
-          </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
             How it works
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            No complicated setup. Just you, your phone, and any outfit you want to try.
+            Three simple steps to see yourself in any outfit
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((item, index) => (
-            <div key={item.step} className="relative">
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-12 left-[60%] w-[80%] h-0.5 bg-slate-200"></div>
-              )}
-              <div className="relative text-center">
-                <div className="w-24 h-24 mx-auto bg-white rounded-3xl shadow-lg flex items-center justify-center mb-6">
-                  <item.icon className="w-10 h-10 text-slate-700" />
+          {steps.map((step, index) => (
+            <div key={step.number} className="relative">
+              <div className="bg-white rounded-3xl p-8 shadow-sm h-full">
+                <span className="text-6xl font-bold text-slate-100 absolute top-4 right-4">
+                  {step.number}
+                </span>
+                <div className="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center mb-6">
+                  <step.icon className="w-7 h-7 text-white" />
                 </div>
-                <div className="text-5xl font-bold text-slate-200 mb-4">{item.step}</div>
-                <h3 className="text-xl font-semibold text-slate-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-slate-600">
-                  {item.description}
-                </p>
+                <h3 className="text-xl font-semibold text-slate-900 mb-3">{step.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{step.description}</p>
               </div>
+              {index < steps.length - 1 && (
+                <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-slate-300" />
+              )}
             </div>
           ))}
         </div>
